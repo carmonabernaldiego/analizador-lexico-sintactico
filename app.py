@@ -40,6 +40,7 @@ def syntactic_analysis(tokens):
                 index += 1
                 if index < len(tokens) and tokens[index][0] == 'INT':
                     index += 1
+                    # Identificador después de int
                     if index < len(tokens) and tokens[index][0] == 'ID':
                         index += 1
                         if index < len(tokens) and tokens[index][0] == 'EQ':
@@ -67,7 +68,7 @@ def syntactic_analysis(tokens):
                                                                     if parse_print(tokens):
                                                                         if index < len(tokens) and tokens[index][0] == 'LLAVEDER':
                                                                             return "Estructura FOR correcta"
-        return "Error linea: " + str(index) + " con el token: " + str(tokens[index])
+        return "Error en el índice: " + str(index) + " con el token: " + str(tokens[index])
 
     return parse_for(tokens)
 
