@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Analizador Léxico y Sintáctico</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"
+    />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h1 class="title is-3 has-text-centered">
+          Analizador Léxico y Sintáctico
+        </h1>
+        <form method="post" onsubmit="return validarTexto()">
+          <div class="field">
+            <div class="control">
+              <textarea
+                class="textarea is-small"
+                name="code"
+                id="codigo"
+                rows="10"
+                placeholder="Introduce tu código aquí"
+              ></textarea>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button class="button is-primary is-fullwidth">Ejecutar</button>
+            </div>
+          </div>
+        </form>
+        <div class="columns is-centered mt-5">
+          <div class="column is-half">
+            <div class="box">
+              <h2 class="title is-5 has-text-centered">Análisis Léxico</h2>
+              <textarea class="textarea is-small" rows="10" readonly>
+                        {% for token in tokens %}
+                            {{ token }}
+                        {% endfor %}
+                    </textarea
+              >
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="box">
+              <h2 class="title is-5 has-text-centered">Análisis Sintáctico</h2>
+              <textarea class="textarea is-small" rows="10" readonly>
+{{ syntax_result }}</textarea
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function validarTexto() {
+        var texto = document.getElementById("codigo").value;
+        if (texto.trim() === "") {
+          swal(
+            "Error",
+            "Por favor, ingresa código antes de ejecutar.",
+            "error"
+          );
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>
